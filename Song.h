@@ -16,9 +16,9 @@
 class Song{
     public:
 		Song();
-		std::string get_name()const;
-		Date get_release()const;
-        std::string get_artist()const;
+		std::string get_name()const {return name;}
+		Date get_release()const {return release;}
+        std::string get_artist()const {return artist;}
 
 		bool operator == (const Song& other)const;
 		bool operator != (const Song& other)const;
