@@ -8,7 +8,7 @@ Song::Song() {
 }
 
 bool Song::operator == (const Song& other)const {
-    if (name == other.name && release == other.release && artist == other.release) {
+    if (name == other.name && release == other.release && artist == other.artist) {
         return true;
     }
     else {
@@ -17,7 +17,7 @@ bool Song::operator == (const Song& other)const {
 }
 
 bool Song::operator != (const Song& other)const {
-    return ! (this == &other);
+    return !(this == &other);
 }
 
 void Song::input(std::istream& ins) {
