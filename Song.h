@@ -25,21 +25,21 @@ class Song{
 		 * 
 		 * @return the name of the Song
 		 */
-		std::string get_name()const {return name;}
+		std::string get_name()const;
 
 		/**
 		 * @brief Get the release date of the Song.
 		 * 
 		 * @return the release date of the Song
 		 */
-		Date get_release()const {return release;}
+		Date get_release()const;
 
 		/**
 		 * @brief Get the artist of the Song.
 		 * 
 		 * @return the artist of the Song
 		 */
-        std::string get_artist()const {return artist;}
+        std::string get_artist()const;
 
 
 		/**

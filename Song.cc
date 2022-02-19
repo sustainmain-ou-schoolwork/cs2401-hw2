@@ -7,6 +7,18 @@ Song::Song() {
     artist = "";
 }
 
+std::string Song::get_name()const {
+    return name;
+}
+
+Date Song::get_release()const {
+    return release;
+}
+
+std::string Song::get_artist()const {
+    return artist;
+}
+
 bool Song::operator == (const Song& other)const {
     if (name == other.name && release == other.release && artist == other.artist) {
         return true;
