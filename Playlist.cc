@@ -2,18 +2,41 @@
 
 
 Playlist::Playlist() {
+    used = 0;
+    capacity = 5;
+    current_index = 0;
 
+    data = new Song[capacity];
 }
 
 // The Big 3
 Playlist::~Playlist() {
-
+    delete []data;
 }
 Playlist::Playlist(const Playlist& other) {
+    used = other.used;
+    capacity = other.capacity;
 
+    data = new Song[capacity];
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
+        data[i] = other.data[i];  // todo: make this do a deep copy of each Song
+    }
 }
 void Playlist::operator = (const Playlist& other) {
+    if (this == &other) {
+        return;
+    }
 
+    // delete old data
+    delete []data;
+
+    // copy new data
+    used = other.used;
+    capacity = other.capacity;
+
+    for (size_t i = 0; i < used; i++) {
+        data[i] = other.data[i];  // todo: make this do a deep copy of each Song
+    }
 }
 
 // Functions for the internal iterator
