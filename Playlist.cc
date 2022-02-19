@@ -104,7 +104,12 @@ void Playlist::attach(const Song& s) {
 }
 
 void Playlist::show_all(std::ostream& outs)const {
-
+    std::cout << '\n';
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
+        std::cout << "Song " << (i + 1) << '\n';
+        outs << data[i];
+        std::cout << std::endl;
+    }
 }
 void Playlist::releaseDate_sort() {
 
