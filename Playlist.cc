@@ -18,16 +18,16 @@ void Playlist::operator = (const Playlist& other) {
 
 // Functions for the internal iterator
 void Playlist::start() {
-
+    current_index = 0;
 }
 void Playlist::advance() {
-
+    current_index++;
 }
 bool Playlist::is_item()const {
-
+    return current_index < used;
 }
 Song Playlist::current()const {
-
+    return data[current_index];
 }
 
 // Other useful things the user may want to do
@@ -71,7 +71,7 @@ void Playlist::resize() {
     Song* tmp;
     tmp = new Song[capacity];
     
-    for (size_t i = 0; i < used; i++) {
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
         tmp[i] = data[i];
     }
 
