@@ -143,7 +143,12 @@ bool Playlist::is_song(const Song& s) const {
 }
 
 void Playlist::load(std::istream& ins) {
+    Song tmp;
 
+    while (ins >> tmp) {
+        attach(tmp);
+        advance();
+    }
 }
 void Playlist::save(std::ostream& outs)const {
     for (size_t i = 0; i < static_cast<size_t>(used); i++) {
