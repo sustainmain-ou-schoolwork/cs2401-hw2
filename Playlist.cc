@@ -20,7 +20,7 @@ Playlist::Playlist(const Playlist& other) {
 
     data = new Song[capacity];
     for (size_t i = 0; i < static_cast<size_t>(used); i++) {
-        data[i] = other.data[i];  // todo: make this do a deep copy of each Song
+        data[i] = other.data[i];
     }
 }
 void Playlist::operator = (const Playlist& other) {
@@ -36,7 +36,7 @@ void Playlist::operator = (const Playlist& other) {
     capacity = other.capacity;
 
     for (size_t i = 0; i < static_cast<size_t>(used); i++) {
-        data[i] = other.data[i];  // todo: make this do a deep copy of each Song
+        data[i] = other.data[i];
     }
 }
 
