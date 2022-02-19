@@ -81,6 +81,7 @@ void Playlist::insert(const Song& s) {
     }
 
     used++;
+    advance();
 }
 void Playlist::attach(const Song& s) {
     if (used >= capacity) {
@@ -101,6 +102,7 @@ void Playlist::attach(const Song& s) {
     }
 
     used++;
+    advance();
 }
 
 void Playlist::show_all(std::ostream& outs)const {
@@ -145,12 +147,13 @@ bool Playlist::is_song(const Song& s) const {
 void Playlist::load(std::istream& ins) {
     Song tmp;
 
+    // Load each song from the file
     while (ins >> tmp) {
         attach(tmp);
-        advance();
     }
 }
 void Playlist::save(std::ostream& outs)const {
+    // output each Song
     for (size_t i = 0; i < static_cast<size_t>(used); i++) {
         outs << data[i];
     }
