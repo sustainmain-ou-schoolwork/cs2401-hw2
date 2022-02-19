@@ -59,7 +59,28 @@ void Playlist::remove_current() {
 
 }
 void Playlist::insert(const Song& s) {
+    if (used >= capacity) {
+        resize();
+    }
 
+    if (is_item()) {
+        // insert the Song before the Song at current_index
+        for (size_t i = used; i > static_cast<size_t>(current_index); i--) {
+            data[i] = data[i - 1];
+        }
+
+        data[current_index] = s;
+    }
+    else {
+        // insert the Song at the beginning of the Playlist
+        for (size_t i = used; i > 0; i--) {
+            data[i] = data[i - 1];
+        }
+
+        data[0] = s;
+    }
+
+    used++;
 }
 void Playlist::attach(const Song& s) {
 
