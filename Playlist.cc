@@ -83,7 +83,24 @@ void Playlist::insert(const Song& s) {
     used++;
 }
 void Playlist::attach(const Song& s) {
+    if (used >= capacity) {
+        resize();
+    }
 
+    if (is_item()) {
+        // insert the Song after the Song at current_index
+        for (size_t i = used; i > static_cast<size_t>(current_index - 1); i--) {
+            data[i] = data[i - 1];
+        }
+
+        data[current_index + 1] = s;
+    }
+    else {
+        // insert the Song at the end of the Playlist
+        data[used] = s;
+    }
+
+    used++;
 }
 
 void Playlist::show_all(std::ostream& outs)const {
