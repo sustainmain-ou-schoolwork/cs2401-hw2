@@ -34,9 +34,16 @@ bool Song::operator != (const Song& other)const {
 
 void Song::input(std::istream& ins) {
     std::string lineIn;
+
+    while (ins.peek() == '\n' || ins.peek() == '\r') {
+        ins.ignore();
+    }
     getline(ins, lineIn);
     name = lineIn;
     ins >> release;
+    while (ins.peek() == '\n' || ins.peek() == '\r') {
+        ins.ignore();
+    }
     getline(ins, lineIn);
     artist = lineIn;
 }
