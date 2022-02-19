@@ -124,10 +124,40 @@ void Playlist::show_all(std::ostream& outs)const {
     }
 }
 void Playlist::releaseDate_sort() {
+    bool done = false;
+    size_t i;
+    Song tmp;
 
+    // bubble sort
+    while (!done) {
+        done = true;
+        for (i = used - 1; i > 0; --i) {
+            if (data[i].get_release() < data[i - 1].get_release()) {
+                done = false;
+                tmp = data[i];
+                data[i] = data[i - 1];
+                data[i - 1] = tmp;
+            }
+        }
+    }
 }
 void Playlist::artist_sort() {
+    bool done = false;
+    size_t i;
+    Song tmp;
 
+    // bubble sort
+    while (!done) {
+        done = true;
+        for (i = used - 1; i > 0; --i) {
+            if (data[i].get_artist() < data[i - 1].get_artist()) {
+                done = false;
+                tmp = data[i];
+                data[i] = data[i - 1];
+                data[i - 1] = tmp;
+            }
+        }
+    }
 }
 Song Playlist::find_song(const std::string& name)const {
     // look through each Song in the Playlist
