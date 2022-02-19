@@ -14,6 +14,7 @@ Playlist::~Playlist() {
     delete []data;
 }
 Playlist::Playlist(const Playlist& other) {
+    // copy new data
     used = other.used;
     capacity = other.capacity;
 
@@ -34,7 +35,7 @@ void Playlist::operator = (const Playlist& other) {
     used = other.used;
     capacity = other.capacity;
 
-    for (size_t i = 0; i < used; i++) {
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
         data[i] = other.data[i];  // todo: make this do a deep copy of each Song
     }
 }
@@ -74,10 +75,28 @@ void Playlist::artist_sort() {
 
 }
 Song Playlist::find_song(const std::string& name)const {
+    // look through each Song in the Playlist
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
+        // if the name matches, return the Song
+        if (data[i].get_name() == name) {
+            return data[i];
+        }
+    }
 
+    // if no match was found, return the default Song
+    Song tmp;
+    return tmp;
 }
 bool Playlist::is_song(const Song& s) const {
+    // look through each Song in the Playlist
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
+        // if the Song values match, return true
+        if (data[i] == s) {
+            return true;
+        }
+    }
 
+    return false;
 }
 
 void Playlist::load(std::istream& ins) {
