@@ -89,7 +89,7 @@ void Playlist::attach(const Song& s) {
 
     if (is_item()) {
         // insert the Song after the Song at current_index
-        for (size_t i = used; i > static_cast<size_t>(current_index - 1); i--) {
+        for (size_t i = used; i > static_cast<size_t>(current_index + 1); i--) {
             data[i] = data[i - 1];
         }
 
