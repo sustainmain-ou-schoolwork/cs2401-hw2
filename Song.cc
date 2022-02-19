@@ -29,7 +29,12 @@ bool Song::operator == (const Song& other)const {
 }
 
 bool Song::operator != (const Song& other)const {
-    return !(this == &other);
+    if (name == other.name && release == other.release && artist == other.artist) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
 
 void Song::input(std::istream& ins) {
