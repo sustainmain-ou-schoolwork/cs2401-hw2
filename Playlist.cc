@@ -56,7 +56,17 @@ Song Playlist::current()const {
 
 // Other useful things the user may want to do
 void Playlist::remove_current() {
+    if (used == 0) {
+        return;
+    }
 
+    if (is_item()) {
+        for (size_t i = current_index; i < static_cast<size_t>(used - 1); i++) {
+            data[i] = data[i + 1];
+        }
+    }
+
+    used--;
 }
 void Playlist::insert(const Song& s) {
     if (used >= capacity) {
