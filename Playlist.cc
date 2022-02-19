@@ -66,5 +66,15 @@ void Playlist::save(std::ostream& outs)const {
 
 
 void Playlist::resize() {
+    capacity += 5;
 
+    Song* tmp;
+    tmp = new Song[capacity];
+    
+    for (size_t i = 0; i < used; i++) {
+        tmp[i] = data[i];
+    }
+
+    delete []data;
+    data = tmp;
 }
