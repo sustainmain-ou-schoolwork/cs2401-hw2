@@ -103,7 +103,9 @@ void Playlist::load(std::istream& ins) {
 
 }
 void Playlist::save(std::ostream& outs)const {
-
+    for (size_t i = 0; i < static_cast<size_t>(used); i++) {
+        outs << data[i];
+    }
 }
 
 
